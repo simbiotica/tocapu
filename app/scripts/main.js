@@ -44,6 +44,11 @@ require([
 
   sessionStorage.setItem('CARTODBUSER', 'simbiotica');
 
+  // Extensions
+  Number.prototype.toCommas = function() {
+    return this.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   // CARTODB Hack
   cdb.core.Template.compilers = _.extend(cdb.core.Template.compilers, {
     handlebars: typeof(Handlebars) === 'undefined' ? null : Handlebars.compile
